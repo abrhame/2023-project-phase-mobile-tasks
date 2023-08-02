@@ -45,6 +45,7 @@ class manageTask {
 String? operations() {
   print("Task Manager");
   print("");
+  print("----------------------------------------------------");
   print("Pleas select one of the following");
   print("To add a new task -> enter 0");
   print("To view all tasks -> enter 1");
@@ -53,8 +54,8 @@ String? operations() {
   print("To update a task -> enter 4");
   print("delete a task -> enter 5");
   print("To exit Task Manager -> enter any key ");
-
   String? option = stdin.readLineSync();
+  print("----------------------------------------------------");
   return option;
 }
 
@@ -71,6 +72,19 @@ void updateTask(String taskToBeUpdated, String title, String description,
       tasks[i].dueDate = dueDate;
       tasks[i].status = status;
     }
+  }
+}
+
+void stayInTaskManager(taskManger) {
+  print("----------------------------------------------------");
+  print("To continue with the task manager, enter 0: ");
+  print("To exit Task Manager -> enter any key ");
+  String? option = stdin.readLineSync();
+  print("----------------------------------------------------");
+  if (option == "0") {
+    recurse(taskManger);
+  } else {
+    exit(0);
   }
 }
 
@@ -93,7 +107,7 @@ void recurse(taskManger) {
     taskManger.addTask(task);
     print("successfully added task");
     print(taskManger.getTask());
-    recurse(taskManger);
+    stayInTaskManager(taskManger);
   } else if (option == "1") {
     if (taskManger.seeTasks().length == 0) {
       print("no task found");
@@ -101,7 +115,7 @@ void recurse(taskManger) {
       print(taskManger.seeTasks());
     }
 
-    recurse(taskManger);
+    stayInTaskManager(taskManger);
   } else if (option == "2") {
     if (taskManger.seeTasks().length == 0) {
       print("no task found");
@@ -109,7 +123,7 @@ void recurse(taskManger) {
       print(taskManger.showTask("completed", taskManger.seeTasks()));
     }
 
-    recurse(taskManger);
+    stayInTaskManager(taskManger);
   } else if (option == "3") {
     if (taskManger.seeTasks().length == 0) {
       print("no task found");
@@ -117,7 +131,7 @@ void recurse(taskManger) {
       print(taskManger.showTask("pending", taskManger.seeTasks()));
     }
 
-    recurse(taskManger);
+    stayInTaskManager(taskManger);
   } else if (option == "4") {
     print("Please enter the title of the task you want to update");
     String? titleToBeUpdated = stdin.readLineSync();
@@ -132,13 +146,13 @@ void recurse(taskManger) {
     updateTask(titleToBeUpdated!, titleToUpdate!, descriptionToUpdate!,
         dueDateToUpdate!, statusToUpdate!, taskManger.seeTasks());
     print("successfully updated the task");
-    recurse(taskManger);
+    stayInTaskManager(taskManger);
   } else if (option == "5") {
     print("Please enter the tite of the task you want to remove");
     String? titleToRemove = stdin.readLineSync();
     removeTask(titleToRemove!, taskManger.seeTasks());
     print("successfully removed task");
-    recurse(taskManger);
+    stayInTaskManager(taskManger);
   } else {
     exit(0);
   }
