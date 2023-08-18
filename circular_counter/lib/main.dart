@@ -23,6 +23,8 @@ class MyApp extends StatelessWidget {
 }
 
 class CircularCounter extends StatefulWidget {
+  const CircularCounter({super.key});
+
   @override
   _CircularCounterState createState() => _CircularCounterState();
 }
