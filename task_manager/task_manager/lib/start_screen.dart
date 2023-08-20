@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/create_new_task.dart';
+import 'package:task_manager/task_detail.dart';
+import 'package:task_manager/task_list.dart';
+import "package:task_manager/models/dummy_data.dart";
 
 class StartScreen extends StatelessWidget {
   const StartScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,11 +25,18 @@ class StartScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
                 color: const Color.fromARGB(255, 0, 26, 255),
               ),
-              child: const Center(
-                child: Text(
-                  "Get Started",
-                  textDirection: TextDirection.ltr,
-                  style: TextStyle(color: Colors.white),
+              child: Center(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => TaskList(tasks)));
+                  },
+                  child: const Text(
+                    "Get Started",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             )),

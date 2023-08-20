@@ -10,6 +10,6 @@ void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     title: 'Task Manager',
-    home: TaskDetails(task: tasks[0]), // Use a single task from dummyTasks
+    home: StartScreen(), // Use a single task from dummyTasks
   ));
 }

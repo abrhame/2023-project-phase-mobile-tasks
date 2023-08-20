@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:task_manager/models/task.dart'; // Adjust the import path
+import 'package:task_manager/models/task.dart';
+import 'package:task_manager/task_list.dart'; // Adjust the import path
+import "package:task_manager/models/dummy_data.dart";
 
 class TaskDetails extends StatefulWidget {
   final Task task;
@@ -34,14 +36,17 @@ class _TaskDetailsState extends State<TaskDetails> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
-        leading: const Icon(
-          Icons.arrow_back,
-          color: Color.fromARGB(255, 255, 73, 73),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => TaskList(tasks)));
+          },
+          icon: Icon(Icons.arrow_back),
         ),
         title: const Text('Task Details'),
         actions: [
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
             child: const Icon(Icons.menu),
           )
         ],
@@ -51,7 +56,7 @@ class _TaskDetailsState extends State<TaskDetails> {
           Image.asset('./assets/detail.png',
               height: 300, width: double.infinity),
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

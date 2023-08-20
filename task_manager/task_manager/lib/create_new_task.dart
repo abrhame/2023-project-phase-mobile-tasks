@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:task_manager/models/task.dart";
 import "package:task_manager/models/task_manger.dart";
+import "package:task_manager/start_screen.dart";
 import "package:task_manager/widget/input_field.dart";
 
 class CreateTask extends StatefulWidget {
@@ -38,7 +39,10 @@ class _CreateTaskState extends State<CreateTask> {
                 Icons.arrow_back,
                 color: Color.fromARGB(255, 255, 73, 73),
               ),
-              onPressed: () {}),
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => StartScreen()));
+              }),
           title: const Text(
             "Create new Task",
             style: TextStyle(fontWeight: FontWeight.bold),
@@ -81,11 +85,11 @@ class _CreateTaskState extends State<CreateTask> {
           ),
           const InputField("Description"),
           Container(
-              margin: EdgeInsets.all(16),
+              margin: const EdgeInsets.all(16),
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Color.fromARGB(255, 255, 73, 73),
+                color: const Color.fromARGB(255, 255, 73, 73),
               ),
               child: TextButton(
                   onPressed: () {},
