@@ -16,7 +16,7 @@ class StartScreen extends StatelessWidget {
         left: 0,
         right: 0,
         bottom: 0,
-        child: TextButton(
+        child: ElevatedButton(
             onPressed: () {},
             child: Container(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
